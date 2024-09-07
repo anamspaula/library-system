@@ -1,20 +1,24 @@
 package model;
 
+import utils.CodigoUtil;
+
 public class Usuario {
 
-    private static int sequencialId= 1;
     private String nome;
+    private String usuario;
     private String email;
-    private String telefone;
     private String cpf;
-    private String codigo;
+    private String senha;
+    private Integer codigo;
 
-    public Usuario(String nome, String email, String telefone, String cpf) {
+    public Usuario(String nome, String usuario, String email, String cpf, String senha) {
         this.nome = nome;
+        this.usuario = usuario;
         this.email = email;
-        this.telefone = telefone;
         this.cpf = cpf;
-        this.codigo = gerarCodigoUsuario();
+        this.senha = senha;
+        this.codigo = CodigoUtil.gerarCodigoUsuario();
+        
     }
 
     public String getNome() {
@@ -33,14 +37,6 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
     public String getCpf() {
         return cpf;
     }
@@ -49,20 +45,29 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public String getCodigo() {
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Integer getCodigo() {
         return codigo;
     }
 
-    // Função para gerar o código do usuário
-    private String gerarCodigoUsuario(){
-        return "US" + (sequencialId++);
-
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario [nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", cpf=" + cpf + ", codigo="
-                + codigo + "]";
+    public String getUsuario() {
+        return usuario;
     }
 
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    
 }

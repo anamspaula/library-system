@@ -1,14 +1,15 @@
 package model;
 
+import utils.CodigoUtil;
+
 public class Livro {
 
-    private static int sequencialId= 1;
     private String titulo;
     private String autor;
     private String isbn;
     private LivroStatus status;
     private int anoPublicacao;
-    private String codigo;
+    private Integer codigo;
 
     public Livro(String titulo, String autor, String isbn, int anoPublicacao) {
         this.titulo  = titulo;
@@ -16,7 +17,7 @@ public class Livro {
         this.isbn = isbn;
         this.status = LivroStatus.DISPONIVEL;
         this.anoPublicacao = anoPublicacao;
-        this.codigo = gerarCodigoLivro();
+        this.codigo = CodigoUtil.gerarCodigoLivro();
     }
 
     public String getTitulo() {
@@ -51,7 +52,7 @@ public class Livro {
         this.status = status;
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
@@ -63,14 +64,8 @@ public class Livro {
         this.anoPublicacao = anoPublicacao;
     }
 
-    // Função para gerar o código do livro
-        private String gerarCodigoLivro(){
-        return "US" + (sequencialId++);
-
-    }
-
     // Função que verifica a disponibilidade de empréstimo do livro
-    public void emprestar(){
+    public void emprestar(Livro livro){
         if(this.status == LivroStatus.DISPONIVEL){
             System.out.println("O livro " + getTitulo() + " está disponível!");
             setStatus(LivroStatus.EMPRESTADO);
@@ -79,7 +74,7 @@ public class Livro {
         }
     }
 
-  public void devolver(){
+  public void devolver(Livro livro){
     if(this.status == LivroStatus.EMPRESTADO){
         System.out.println("O livro foi devolvido com sucesso!");
         setStatus(LivroStatus.DISPONIVEL);

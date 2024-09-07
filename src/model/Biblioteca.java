@@ -5,11 +5,11 @@ import java.util.List;
 public class Biblioteca {
 
     private List<Livro> livros;
-    private List<Usuario> usuarios;
+    private List<Aluno> alunos;
 
-    public Biblioteca(List<Livro> livros, List<Usuario> usuarios) {
+    public Biblioteca(List<Livro> livros, List<Aluno> alunos) {
         this.livros = livros;
-        this.usuarios = usuarios;
+        this.alunos = alunos;
     }
 
     // Função para adicionar livros
@@ -18,8 +18,8 @@ public class Biblioteca {
     }
     
     // Função para adicionar livros
-    public void adicionar(Usuario usuario){
-        usuarios.add(usuario);
+    public void adicionar(Aluno aluno){
+        alunos.add(aluno);
     }
 
     // Faz a pesquisa por titulo
@@ -45,14 +45,41 @@ public class Biblioteca {
     }
 
     // Faz a pesquisa por nome de usuário
-    public Usuario pesquisarNome(String nome){
-        for(Usuario usuario : usuarios){
-            if(usuario.getNome().equalsIgnoreCase(nome)){
-                return usuario;
+    public Aluno pesquisarNome(String nome){
+        for(Aluno aluno : alunos){
+            if(aluno.getNome().equalsIgnoreCase(nome)){
+                return aluno;
             }
         }
 
         return null;
     }
 
+    // Método para emprestar livro
+    public void emprestarLivro (Livro livro){
+        livro.emprestar(livro);
+    }
+
+    // Método para devolver livro
+    public void devolverLivro(Livro livro){
+        livro.devolver(livro);
+    }
+
+    // Método para listar livros
+    public String listarLivro(){
+        StringBuilder listaDeLivros = new StringBuilder();
+        for(Livro livro : livros){
+            listaDeLivros.append(livro.getTitulo()).append("\n");
+        }
+        return listaDeLivros.toString();
+    }
+
+    // Método para listar usuários
+    public String listarUsuario(){
+        StringBuilder listaDeAlunos = new StringBuilder();
+        for(Aluno aluno : alunos){
+            listaDeAlunos.append(aluno.getNome()).append("\n");
+        }
+        return listaDeAlunos.toString();
+    }
 }
