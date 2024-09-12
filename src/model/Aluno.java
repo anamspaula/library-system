@@ -1,6 +1,6 @@
 package model;
 
-import utils.CodigoUtil;
+import utils.CodigoGerador;
 
 public class Aluno {
 
@@ -15,7 +15,7 @@ public class Aluno {
         this.email = email;
         this.telefone = telefone;
         this.cpf = cpf;
-        this.codigo = CodigoUtil.gerarCodigoAluno();
+        this.codigo = CodigoGerador.gerarCodigoAluno();
     }
 
     public String getNome() {

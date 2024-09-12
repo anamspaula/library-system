@@ -1,6 +1,6 @@
 package utils;
 
-public class CodigoUtil {
+public class CodigoGerador {
 
     private static int sequencialId = 1;
 

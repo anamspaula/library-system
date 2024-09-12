@@ -1,6 +1,6 @@
 package model;
 
-import utils.CodigoUtil;
+import utils.CodigoGerador;
 
 public class Usuario {
 
@@ -10,14 +10,16 @@ public class Usuario {
     private String cpf;
     private String senha;
     private Integer codigo;
+    private TipoUsuario tipo;
 
-    public Usuario(String nome, String usuario, String email, String cpf, String senha) {
+    public Usuario(String nome, String usuario, String email, String cpf, String senha, TipoUsuario tipo) {
         this.nome = nome;
         this.usuario = usuario;
         this.email = email;
         this.cpf = cpf;
         this.senha = senha;
-        this.codigo = CodigoUtil.gerarCodigoUsuario();
+        this.codigo = CodigoGerador.gerarCodigoUsuario();
+        this.tipo = tipo;
         
     }
 
@@ -69,5 +71,12 @@ public class Usuario {
         this.usuario = usuario;
     }
 
+    public TipoUsuario getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoUsuario tipo) {
+        this.tipo = tipo;
+    }
     
 }

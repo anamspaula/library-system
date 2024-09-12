@@ -1,6 +1,6 @@
 package model;
 
-import utils.CodigoUtil;
+import utils.CodigoGerador;
 
 public class Livro {
 
@@ -17,7 +17,7 @@ public class Livro {
         this.isbn = isbn;
         this.status = LivroStatus.DISPONIVEL;
         this.anoPublicacao = anoPublicacao;
-        this.codigo = CodigoUtil.gerarCodigoLivro();
+        this.codigo = CodigoGerador.gerarCodigoLivro();
     }
 
     public String getTitulo() {
